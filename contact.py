@@ -7,6 +7,7 @@ Attributes: firstname, lastname, email, phone
 
 
 class Contact:
+    # Constructeur
     def __init__(
         self, firstname: str = "", lastname: str = "", email: str = "", phone: str = ""
     ) -> None:
@@ -15,40 +16,40 @@ class Contact:
         self.__email = email
         self.__phone = phone
 
-    @property
+    @property  # Propriété "firstname" -> getter
     def firstname(self) -> str:
         return self.__firstname
 
-    @firstname.setter
+    @firstname.setter  # Setter
     def firstname(self, value: str) -> None:
         if isinstance(value, str) and value.strip():
             self.__firstname = value
         else:
             raise ValueError("Error: Firstname must be a non-empty string")
 
-    @property
+    @property  # Propriété "lastname" -> getter
     def lastname(self) -> str:
         return self.__lastname
-
-    @lastname.setter
+ 
+    @lastname.setter # Setter
     def lastname(self, value: str) -> None:
         if isinstance(value, str) and value.strip():
             self.__lastname = value
         else:
             raise ValueError("Error: Lastname must be a non-empty string")
 
-    @property
+    @property  # Propriété "email" -> getter
     def email(self) -> str:
         return self.__email
 
-    @email.setter
+    @email.setter # setter
     def email(self, value: str) -> None:
         if isinstance(value, str) and value.strip():
             self.__email = value
         else:
             raise ValueError("Error: Email must be a non-empty string")
 
-    @property
+    @property # Propriété "phone" -> getter
     def phone(self) -> str:
         return self.__phone
 
@@ -59,6 +60,7 @@ class Contact:
         else:
             raise ValueError("Error: Phone must be a non-empty string")
 
+    # Méthode magique __str__ : l'équivalent plus ou moins de la méthode ToString en Java
     def __str__(self) -> str:
         return (
             f"First Name: {self.__firstname}\n"
@@ -67,6 +69,7 @@ class Contact:
             + f"Phone: {self.__phone}\n"
         )
 
+    # Méthode statique utilitaire
     @staticmethod
     def get_valid_input(prompt: str, field_name: str) -> str:
         """Helper method to get valid non-empty input from user."""
@@ -77,6 +80,7 @@ class Contact:
             else:
                 print(f"Error: {field_name.capitalize()} cannot be empty!")
 
+    # Méthode classe retournant un objet "Concact"
     @classmethod
     def create_contact(cls) -> "Contact":
 
